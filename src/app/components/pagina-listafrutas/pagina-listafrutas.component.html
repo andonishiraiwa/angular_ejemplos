@@ -1,27 +1,26 @@
 <div id="frutti">
-<h1>Lista de Frutas</h1>
+  <h1>Lista de Frutas</h1>
+  <section>
+  <div>
 
-<div>
 
+    <input type="text" [(ngModel)]="nuevafruta">
 
-<input type="text" [(ngModel)]="nuevafruta">
+    <span>Crear nueva fruta</span>
+    <button (click)="new()" class="btn btn-success">CREAR</button>
+  </div>
 
-<span>Crear nueva fruta</span>
-<button (click)="new()" class="btn btn-success">CREAR</button>
-</div>
+  <hr>
 
-<hr>
+  
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let fruta of frutas">
 
-<section>
-<ul class="list-group"> 
-<li class="list-group-item"
-*ngFor="let fruta of frutas">
+        <span>{{fruta.imagen}}{{fruta.id}}{{fruta.nombre}}</span>
+        <button (click)="delete(listafruta)" class=" btn-primary btn">Eliminar</button>
 
- <span>{{fruta.id}}{{fruta.nombre}}</span>
- <button (click)="delete(listafruta)" class=" btn-primary btn">Eliminar</button>                        
-       
-</li>
+      </li>
 
-</ul>
-</section>
+    </ul>
+  </section>
 </div>
