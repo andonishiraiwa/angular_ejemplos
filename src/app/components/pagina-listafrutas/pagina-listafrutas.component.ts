@@ -12,7 +12,7 @@ export class PaginaListafrutasComponent implements OnInit {
   //definimos el array
   frutas: Fruta[]; //modelo fruta asignado a 'frutas'
 
-  //nuevaFruta : string
+  nuevaFruta : string
 
 
   constructor(public listafrutasService: ListafrutasService) {

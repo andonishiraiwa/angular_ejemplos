@@ -1,26 +1,90 @@
 <div id="frutti">
-  <h1>Lista de Frutas</h1>
+
+
+
+
   <section>
-  <div>
+
+    <h1>Lista de Frutas</h1>
+
+    <div class="d-flex inline  justify-content-between mb-2 p-3">
+
+      <input type="text" [(ngModel)]="nuevaFruta" placeholder="Añadiendo una nueva fruta" class="form-control col-10 p-2">
+      <button (click)="new()" class="btn btn-success">CREAR</button>
+    </div>
+    
 
 
-    <input type="text" [(ngModel)]="nuevafruta">
+    <hr>
+    <div class="d-inline-flex  p-3">
+      <ul class="list-group">
 
-    <span>Crear nueva fruta</span>
-    <button (click)="new()" class="btn btn-success">CREAR</button>
-  </div>
+        <!-- alternativa en caso de que no se cargen datos en el array para la vista -->
+        <p *ngIf="frutas.length == 0">Cargando lista de frutas...</p>
 
-  <hr>
+        <li class="list-group-item" *ngFor="let fruta of frutas">
+          <div class="d-inline-flex p-3">
+            <div class="w-25 p-3 ">
+              <p style="background-color: #eee;">
+                <img src="{{fruta.imagen}}" class="img-thumbnail ">
 
-  
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let fruta of frutas">
+                <tr>
+                  <td class="p-2">
+                    {{fruta.id}}
+                  </td>
 
-        <span>{{fruta.imagen}}{{fruta.id}}{{fruta.nombre}}</span>
-        <button (click)="delete(listafruta)" class=" btn-primary btn">Eliminar</button>
 
-      </li>
+                  <td class="p-2"> 
+                    {{fruta.nombre}}
+                    
+                  </td>
 
-    </ul>
+                  <td>
+                    <input type="checkbox" [checked]="frutas.completed"(click)="change(frutas)">
+                  </td>
+                </tr>
+
+                
+            </div>
+
+        
+            
+            <div class="table-responsive-md">
+              <table class="table">
+                <tr>
+                  <th>Precio</th>
+                  <td>
+                    {{fruta.precio}}
+                  </td>
+                </tr>
+                <tr>
+                  <th>Oferta</th>
+                  <td>
+                    {{fruta.oferta}}
+                  </td>
+                </tr>
+                <tr>
+                  <th>Descuento</th>
+                  <td>
+                    {{fruta.descuento}}
+                  </td>
+                </tr>
+                
+              </table>
+            </div>
+
+
+          </div>
+          <button (click)="delete(listafruta)" class=" btn-primary btn">Eliminar</button>
+
+
+
+
+        </li>
+
+      </ul>
+
+    </div>
   </section>
+
 </div>
