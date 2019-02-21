@@ -1,0 +1,27 @@
+<div id="frutti">
+<h1>Lista de Frutas</h1>
+
+<div>
+
+
+<input type="text" [(ngModel)]="nuevafruta">
+
+<span>Crear nueva fruta</span>
+<button (click)="new()" class="btn btn-success">CREAR</button>
+</div>
+
+<hr>
+
+<section>
+<ul class="list-group"> 
+<li class="list-group-item"
+*ngFor="let fruta of frutas">
+
+ <span>{{fruta.id}}{{fruta.nombre}}</span>
+ <button (click)="delete(listafruta)" class=" btn-primary btn">Eliminar</button>                        
+       
+</li>
+
+</ul>
+</section>
+</div>

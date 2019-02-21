@@ -17,6 +17,7 @@ import { PaginaServiceComponent } from './components/pagina-service/pagina-servi
 import { PaginaFrutasComponent } from './components/pagina-frutas/pagina-frutas.component';
 import { PaginaTareasComponent } from './components/pagina-tareas/pagina-tareas.component';
 import {PaginaPersonasComponent} from './components/pagina-personas/pagina-personas.component';
+import { PaginaListafrutasComponent } from './components/pagina-listafrutas/pagina-listafrutas.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'frutas', component: PaginaFrutasComponent },
   { path: 'todos', component: PaginaTareasComponent},
   { path: 'persona', component: PaginaPersonasComponent},
+  { path: 'listafrutas', component: PaginaListafrutasComponent},
 
   //Este tiene que ir siempre abajo, si no redirecciona a home todo lo que tiene debajo
   { path: '**', pathMatch: 'full', redirectTo: 'home' }

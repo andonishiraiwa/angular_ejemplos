@@ -9,10 +9,13 @@ import { TodosService } from 'src/app/providers/todos.service';
 })
 export class PaginaTareasComponent implements OnInit {
 
-  todos : Todo[];
+  //declaramos el array
+  todos : Todo[]; //modelo Todo asignado a 'todos'
+
   nuevaTarea : string;
 
-  constructor( public todosService:TodosService ) {
+  constructor( public todosService:TodosService ) { 
+    //llamamos al servicio TodosService , nos referiremos a el como todosService
       console.log('TodosComponent constructor');
       this.todos = [];
   }
@@ -24,10 +27,10 @@ export class PaginaTareasComponent implements OnInit {
   }
   //ngOnInit
 
-  cargarTareas(){
+  cargarTareas(){ //llamaremos a la funcion getTodos() del servicio 'todos.service.ts' para sacar las tareas
     console.log('TodosComponent cargarTareas');
-    this.todos = [];  //NO ME LO PILLA, EN JSON SERVER SI, EN HTML NO
-    this.todosService.getTodos().subscribe(
+    this.todos = [];  
+     this.todosService.getTodos().subscribe( //el getTodos() de la clase TodosService
       resultado => {
         console.debug('peticion correcta %o', resultado);
        // this.mapeo(resultado);

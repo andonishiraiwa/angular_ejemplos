@@ -38,6 +38,7 @@ import { PaginaPersonasComponent } from './components/pagina-personas/pagina-per
 
 import { PaginaTareasComponent } from './components/pagina-tareas/pagina-tareas.component';
 import { PaginaFrutasComponent } from './components/pagina-frutas/pagina-frutas.component';
+import { PaginaListafrutasComponent } from './components/pagina-listafrutas/pagina-listafrutas.component';
 
 
 
@@ -69,9 +70,9 @@ import { PaginaFrutasComponent } from './components/pagina-frutas/pagina-frutas.
     CarritoComponent,
     PaginaServiceComponent,
     PaginaPersonasComponent,
-
     PaginaTareasComponent,
-    PaginaFrutasComponent
+    PaginaFrutasComponent,
+    PaginaListafrutasComponent
   ],
   imports: [
     BrowserModule,
