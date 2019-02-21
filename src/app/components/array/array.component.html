@@ -1,0 +1,111 @@
+<h1>Jugando con arrays</h1>
+
+<div class="row">
+  <div class="col-6 bg-info border-primary pl-4 pr-4">
+    <h2 class="bg-white text-black-50 b1">Frutas en JSON</h2>
+
+    <p>
+     
+      {{frutas | json}}  <!-- Muestra todo el array -->
+    </p>
+  </div>
+
+<div class="col-6">
+  <h2 class="bg-white text-black-50 b1">Frutas en JSON - Maquetado</h2>
+  
+  <div class="btn-group" role="group" aria-label="Basic example">
+  
+    <!-- Barra de busqueda -->
+    <p class="text-danger">{{searchText}}</p>
+      <input type="text" [(ngModel)]="searchText" class="ml-2 text-primary" placeholder="filtra por nombre fruta o colores"/> 
+          <!-- ETIQUETA PESTAÑA PARA FILTRAR LA LISTA -->
+
+      <button type="button" (click)="cambiarOferta(true)" class="btn btn-success">OFERTA</button>
+      <button type="button" (click)="cambiarOferta(false)" class="btn btn-secondary">TODAS</button>
+    </div>
+
+    <ul class="list-group">
+
+      <!-- Aplicamos flex para cada fruta + datos--> <!-- añadido filtro boleano -->
+      <li *ngFor="let fruta of frutas | filtroOferta : isOferta : searchText" class="list-group-item d-flex justify-content-between">
+
+        <img [src]="fruta.imagen" alt="{{fruta.nombre}}">
+
+
+        <div class="d-flex flex-column">
+          <p class="title">{{fruta.nombre}}</p>
+          <p>
+            <!-- medalla con la descripcion del color escrito en su respectivo color -->
+            <span *ngFor="let color of fruta.colores" class="badge" [style.color]="color.codigo">
+              {{color.nombre}}
+
+            </span>
+          </p>
+        </div>
+
+
+
+        <!-- precio y descuentos -->
+        <div class="d-flex flex-column">
+
+          <!--Condicion si es precio con oferta o no-->
+
+          <span class="{{(!fruta.oferta)?'precio':'precio-descuento'}}">{{fruta.precio | moneda}}</span>
+
+          <!-- medallas oferta, descuento -->
+          <span *ngIf="fruta.oferta" class="badge badge-primary">{{fruta.descuento}}%</span>
+          <span *ngIf="fruta.oferta" class="precio">{{ calcularDescuento(fruta) | number : '1.0-2' | moneda }}</span>
+        </div>
+      </li>
+      <!-- directiva estructural -- *ngFor-->
+    </ul>
+
+  </div>
+
+
+</div>
+
+<!-- Datos que pasan estos diferentes filtros -->
+<div class="row">
+  <div class="col-6 bg-primary border-info pl-4 pr-4">
+    <h2 class="bg-white text-black-50 b1">Frutas MAP, FILTER, FIN y REDUCE</h2>
+    <p>
+      <b>Solo Nombres</b> {{f_nombres | json}}
+    </p>
+    <p>
+      <b>Solo Precios</b> {{f_precios | json}}
+    </p>
+
+    <p>
+      <b>Solo Nombres y Precios</b> {{f_nombre_precios | json}}
+    </p>
+
+
+    <p>
+      <b>Solo Nombres de frutas en oferta</b> {{f_oferta | json}}
+    </p>
+
+    <p>
+      <b>Solo Nombres de frutas NO en oferta</b> {{f_no_oferta| json}}
+    </p>
+
+    <p>
+      <b>reduce Total Frutas</b> {{ total_frutas }}
+    </p>
+
+    <p>
+      <b>reduce Total Frutas Oferta</b> {{ total_frutas_oferta }}
+    </p>
+
+    <p>
+        <b>Solo frutas pares</b> {{ f_par  |json}}
+      </p>
+      
+      <p>
+          <b>Solo frutas impares</b> {{ f_impar |json}}
+        </p>
+  </div>
+
+
+  
+</div>

@@ -1,0 +1,25 @@
+<h1>Listado de Personas</h1>
+<p>Obtenemos la información de <a href="https://randomuser.me/" target="_blank">randomuser.me</a></p>
+
+<p>obtener información de un servicio externo, mapear a nuestro modelo Persona</p>
+
+<p *ngIf="personas.length==0" class="text-danger">*Cargando personas....</p>
+
+<input type="number" ({ngModel})="numeroPersonas" class="form-control">
+<button class="btn btn-primary">Buscar</button>
+
+<ul class="list-group">
+<div class="d-flex">
+<img src="{{p.imagen}}" class="avatar mr-3 rounded">
+
+
+</div>
+
+
+  <li *ngFor="let p of personas" class="list-group-item">{{p|json}}}</li>
+  <p class="text-primary"> {{nombre}} {{apellido}}</p>
+
+  <p>{{email}}</p>
+
+
+</ul>

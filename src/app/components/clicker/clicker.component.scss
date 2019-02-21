@@ -1,0 +1,38 @@
+/*Estilos propios del componente*/
+
+// tambien permitidos comentarios en linea en SASS, NO se ve en el codigo CSS
+body{
+    background: #FFAA55;
+    padding: 15 px;
+}
+
+p{
+    color:white;
+
+}
+span{
+
+    font-size: 50 px;
+    display: block;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+button{
+    color:teal;
+    font-size: 24px;
+
+    }
+
+    .enterrado{
+        text-align: left; 
+        font-family: Arial Black; 
+        font-weight: bold; font-size: 30px; 
+        background: #202020; 
+        -webkit-background-clip: text; 
+        -moz-background-clip: text; 
+        background-clip: text; 
+        color: transparent; 
+        text-shadow: 0px 3px 3px rgba(255,255,255,0.4),0px -1px 1px rgba(0,0,0,0.3);
+        }

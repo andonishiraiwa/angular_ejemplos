@@ -1,0 +1,26 @@
+
+<!-- Selector de idiomas -->
+<div class="btn-group" role="group">
+
+  <button *ngFor="let idioma of idiomas"
+  
+  type="button" (click)=cambiarIdioma(idioma) 
+  
+class="{{(idiomaSeleccionado===idioma)?'btn btn-primary':'btn btn-secondary'}}">
+    
+    
+    {{idioma}}
+
+
+  </button>
+</div>
+
+
+<input type="text" [(ngModel)]="textoATraducir" placeholder="escribeme algo">
+
+<hr>
+
+<p>idioma seleccionado: {{idiomaSeleccionado}}</p>
+
+<!-- llamada al componente hijo -->
+<app-traductor (llamarPadre)="escucho($event)" [idioma]="idiomaSeleccionado"[texto]="'hola'"></app-traductor>

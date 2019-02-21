@@ -1,0 +1,15 @@
+<div>
+
+        <p class=enterrado>Sé capaz de hacer 100 clicks en 10 segundos</p>
+        <button class="btn btn-primary" (click)="start()" disabled="{{ (tiempo == 10)?'':'disabled' }}"> 
+            {{ (tiempo == 10)?'Comenzar':'Jugando' }}
+        </button>
+      
+        <button *ngIf="tiempo==0" (click)="restart()" class="btn btn-danger">Nueva Partida</button>
+      
+        <span>{{tiempo}}</span>
+        <span>{{contador}}</span>
+        <button (click)="sumar()" class="btn btn-success" >DALE RAPIDO</button>
+      </div>
+    <div>
+         

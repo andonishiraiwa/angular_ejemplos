@@ -1,0 +1,37 @@
+<div class="row d-flex justify-content-between">
+
+  <div class="col-3">
+    <ul class="list-group">
+      <li *ngFor="let c of coches;let i = index" (click)="cambiarCoche(i)" class="list-group-item {{(c.nombre===cocheSelec1.nombre||c.nombre===cocheSelec2.nombre)?'active':''}}">{{c.nombre
+        | uppercase}}</li>
+    </ul>
+
+    <p>cocheSelec1 => {{cocheSelec1.nombre}}</p>
+    <p>cocheSelec2 => {{cocheSelec2.nombre}}</p>
+
+  </div>
+  <div class="col-3">
+      <!-- 1er argumento: nombr del hijo, 2º el nombre del padre -->
+    <app-card-coche (cocheDefinitivo)="escuchoPedido($event)" [coche]="cocheSelec1" [cocheComparar]="cocheSelec2"></app-card-coche>
+  </div>
+  <div class="col-3">
+    <app-card-coche (cocheDefinitivo)="escuchoPedido($event)" [coche]="cocheSelec2" [cocheComparar]="cocheSelec1"></app-card-coche>
+  </div>
+
+
+<div class="col-3">
+  <h4>Carrito Compra</h4>
+  <p *ngIf="cocheEnCarrito.length==0"> Aquí no hay nada...</p>
+  <ul class="list-group">
+    <li *ngFor="let car of cocheEnCarrito;" class="list-group-item">{{car.nombre | uppercase}}-{{car.precio | moneda}}
+      <span (click)="eliminarCarro(cCarro)">Eliminar del carro</span>
+    </li>
+
+  </ul>
+
+
+</div>
+
+
+
+</div>

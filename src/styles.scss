@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+
+    background: lightblue;
+
+
+}
+
+
+.main-container{
+
+    margin-top: 50px;
+}
+
+h1{
+    //color:rgb(127, 250, 223);
+    color: rgb(255, 255, 255);
+text-shadow: 0px 2px 3px rgb(61, 61, 61);
+}
+
+.wellcome {
+    position: relative;
+    font-family: 'Permanent Marker', cursive;
+    font-variant:small-caps;
+    font-size: 30px;
+    -webkit-transform: skew(-5deg,-5deg);
+    padding-left: 40px;
+    padding-right: 20px;
+    background-image: -webkit-linear-gradient(rgb(15, 219, 255) 0%,  #F9F9F7 100%);
+    
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    -webkit-filter: drop-shadow(2px 2px 20px #ffffff);
+
+  }
+
+ 

@@ -1,0 +1,14 @@
+<h1>Servicios</h1>
+<p>Servicios o Providers, van a ser los encargados de manipular la ingformacion de la App</p>
+<p>Normalmente la fuente de la informacion es un REST, pero podria ser LOCALSTORAGE, un sistema de ficheros</p>
+<p class="text-warning">Atencion</p>
+<p>Importar en app.modulte.ts en la libreria<b>@angular/common/http/HttpClientModule</b></p>
+<p>En cada Servicio inyectar en el constructor <b>@angular/common/http/HttpClient</b></p>
+<p>En los componentes la llamada inicial se hacen en <b>OnInit</b>, no en el constructor, inyectar en el servicio</p>
+
+<h2 class="text-primary">Listado de frutas conseguido desde un servicio</h2>
+<p>*Acordaros de arrancar servidor json-server en localhost:3000*</p>
+<p *ngIf="frutas.length==0">Cargando frutas.....</p>
+<ul>
+    <li *ngFor="let f of frutas">{{f.nombre}}{{f |json}}</li>
+</ul>

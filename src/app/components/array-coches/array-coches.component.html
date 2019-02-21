@@ -1,0 +1,37 @@
+<ul class="list-group">
+    <li *ngFor="let coche of coches" class="list-group-item d-flex justify-content-between">
+      <img [src]="coche.imagen" alt="{{coche.nombre}}">
+
+      <!-- nombre y colores -->
+      <div class="d-flex flex-column">
+        <p class="title">{{coche.nombre}}</p>
+        <p>
+          <span *ngFor="let color of coche.colores" 
+                class="badge" 
+                [style.color]="color.codigo">
+            {{color.nombre}}
+          </span>          
+        </p>
+      </div>
+
+      <!-- precio y descuentos -->
+      <div class="d-flex flex-column">          
+        <span class="{{(!coche.oferta)?'precio':'precio-descuento'}}">{{coche.precio | moneda}}</span>            
+        <span *ngIf="coche.oferta" class="badge badge-primary">{{c.descuento}}%</span>
+     </div>
+
+    </li>    
+</ul>
+
+<!-- selector de coches -->
+<div class="btn-group" role="group" aria-label="Basic example">
+    <button *ngFor="let coche of coches" 
+            type="button" 
+            (click)="cambiarCoche(coche)"
+            class="{{(cocheSeleccionado===coche)?'btn btn-primary':'btn btn-secondary'}}">
+            {{coche}}
+    </button>
+  </div>
+
+
+  <p>Coche Seleccionado: {{cocheSeleccionado}}</p>

@@ -1,0 +1,44 @@
+<h1 class="text-primary">Pipes o Filtros</h1>
+
+<div class="bg-info p-3 m-3">
+<h2>Pipes disponibles an Angular</h2>
+<ul>
+    <li><a class="text-white-50" href="">Documentacion API</a></li>
+    <li><a class="text-white-50" href="https://angular.io/guide/pipes">Documentacion sobre Pipes</a></li>
+</ul>
+</div>
+
+<div class="row">
+    <div class="col-5  p-3 m-3">
+
+<!--FORMATO FUENTE-->
+
+<p> Nombre sin pipe: <b>{{nombre}}</b></p>
+<p> Nombre con pipe de lowercase <b>{{ nombre | lowercase }}</b></p>
+<p> Nombre con pipe de uppercase <b>{{ nombre | uppercase }}</b></p>
+<p> Nombre con pipe de titlecase <b>{{ nombre | titlecase }}</b></p>
+
+
+
+
+<!--FORMATO NUMEROS-->
+
+<p> numero sin pipe <b>{{ numero }}</b></p>
+<p> numero con decimal pipe '1.0-2' <b>{{ numero | number: '1.0-2' }}</b></p>
+<p> numero con decimal pipe '2.0-3' <b>{{ numero | number: '2.0-3' }}</b></p>
+
+<p class="text-danger">TODO locales 'es'</p>
+
+</div>
+<div class="col-5  p-3 m-3">
+<!--SIMBOLOS MONEDA-->
+
+<h2>Pipes creado por nosotros</h2>
+<div class="p-4"></div>
+<p> sin pipe numero: <b>{{numero}}</b> </p>
+<p>con pipe numero en euros :<b>{{numero | moneda:'es'}}</b></p>
+<p><b>con pipe numero en dolares: {{numero | moneda:'en'}}</b></p>
+
+
+</div>
+</div>

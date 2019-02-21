@@ -1,0 +1,61 @@
+.enterrado{
+    text-align: left; 
+    font-family: Arial Black; 
+    font-weight: bold; font-size: 40px; 
+    background: #1879e7; 
+    -webkit-background-clip: text; 
+    -moz-background-clip: text; 
+    background-clip: text; 
+    color: transparent; 
+    text-shadow: 0px 3px 3px rgba(0, 255, 255, 0.397),0px -1px 1px rgba(0,0,0,0.3);
+    }
+    
+.wellcome {
+    position: relative;
+    font-family: 'Permanent Marker', cursive;
+    font-variant:small-caps;
+    font-size: 50px;
+    -webkit-transform: skew(-5deg,-5deg);
+    padding-left: 80px;
+    background-image: -webkit-linear-gradient(#FF0FF8 0%,  #F9F9F7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    -webkit-filter: drop-shadow(2px 2px 20px #f008b7);
+  }
+
+ 
+  .wellcome-w {
+    position: relative;
+    background-image: -webkit-linear-gradient(#FF0FF8 0%,  #F9F9F7 100%);
+    -webkit-background-clip: text;
+    padding-right: 18px;
+    margin-right: -18px;
+  }
+  
+  
+  .future-cop {
+    position: relative;
+    margin-top: 320px;
+  }
+  
+  .future {
+    position: absolute;
+    left: 0;
+    top: -310px;
+    font-family: 'Mr Dafoe', cursive;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    color: #EB219B;
+    -webkit-text-fill-color: rgb(57, 192, 255);
+    text-shadow: -2px -2px 0 rgb(0, 225, 255);
+    -webkit-filter: drop-shadow(3px 3px 1px rgb(24, 144, 255));
+    -webkit-transform: skew(-5deg,-5deg);
+    font-weight: normal;
+    z-index: 2;
+    margin-left: 60px;
+    padding-left: 50px;
+    padding-right: 70px;
+  }
+  
