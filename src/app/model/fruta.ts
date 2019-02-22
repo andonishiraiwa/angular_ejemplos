@@ -1,6 +1,6 @@
 const IMAGEN_DEFAULT = 'https://image.freepik.com/vector-gratis/lema-pina-sandia_41984-19.jpg';
 
- 
+
 export class Fruta {
 
     //atributos privador y comienzan con guines bajos
@@ -53,7 +53,7 @@ export class Fruta {
     public set cantidad(value: number) {
         this._cantidad = value;
     }
-    
+
     //constructor (solo puede haber 1 y no existe sobrecarga)
     //usaremos parametros con '?' para los opcionales
     /**
@@ -69,19 +69,19 @@ export class Fruta {
 
 
 
-    constructor( 
-        nombre: string,  precio: number,   id?: number,  oferta = false,  descuento?: number,  imagen?: string, cantidad = 1
-){
-       this._nombre = nombre;
+    constructor(
+        nombre: string, precio: number, id?: number, oferta = false, descuento?: number, imagen?: string, cantidad = 1
+    ) {
+        this._nombre = nombre;
         this._precio = precio;
         this._id = (id) ? id : -1;
         this._oferta = oferta;
         this._descuento = (descuento) ? descuento : 0;
         this._imagen = (imagen) ? imagen : IMAGEN_DEFAULT;
-        this._cantidad=(cantidad) ? cantidad:0;
+        this._cantidad = (cantidad) ? cantidad : 0;
     }
 
     //getters y setters
 
-   
+
 }

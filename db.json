@@ -87,7 +87,7 @@
       ]
     },
     {
-      "nombre": "asdfhjkl",
+      "nombre": "Limon",
       "oferta": false,
       "descuento": 0,
       "precio": 0.99,
@@ -95,10 +95,10 @@
       "id": 6
     },
     {
-      "nombre": "limon",
+      "nombre": "Piña",
       "oferta": false,
       "descuento": 0,
-      "precio": 0.99,
+      "precio": 3,
       "imagen": "https://image.freepik.com/vector-gratis/lema-pina-sandia_41984-19.jpg",
       "id": 7
     }

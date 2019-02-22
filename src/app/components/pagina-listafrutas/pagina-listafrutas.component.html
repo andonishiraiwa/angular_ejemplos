@@ -32,7 +32,10 @@
         <label for="nombre">Precio</label>
         <input type="number" formControlName="precio" class="form-control">
       </div>
-      <button type="submit" class="btn btn-block btn-success" [disabled]="formulario.invalid">Crear</button>
+      <div class="d-flex">
+      <button type="submit" class="btn btn-block btn-success w-50" [disabled]="formulario.invalid">Crear</button>
+      <button type="submit" class="btn btn-block btn-primary w-50" [disabled]="formulario.invalid">Modificar fruta Seleccionada</button>
+    </div>
     </form>
 
     <hr>
@@ -67,7 +70,7 @@
                   </td>
 
                   <td>
-                    <input type="checkbox" [checked]="frutas.completed" (click)="change(frutas)">
+                   <!-- <input type="checkbox" [checked]="frutas.completed" (click)="change(frutas)">-->
                   </td>
                 </tr>
 

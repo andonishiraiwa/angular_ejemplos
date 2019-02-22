@@ -29,28 +29,28 @@ export class PaginaListafrutasComponent implements OnInit {
 
   nuevaFruta: Fruta;
   mensaje: string;
- formulario: FormGroup; 
+  formulario: FormGroup;
 
 
 
 
- 
 
-  constructor(private listafrutasService: ListafrutasService, private formBuilder:FormBuilder) {
+
+  constructor(private listafrutasService: ListafrutasService, private formBuilder: FormBuilder) {
 
     //llamada al servicio ListafrutasService como listafrutasService
     console.trace('FrutasComponent constructor');
     this.frutas = [];
-    this.nuevaFruta = new Fruta('',0);
+    this.nuevaFruta = new Fruta('', 0);
     this.mensaje = '';
-   
-   
+
+
     //inicializamos el formulario
-    
+
 
     this.formulario = this.formBuilder.group({
 
-//nombre de FormControll
+      //nombre de FormControll
       nombre: [
         '',                                                                         // value
         [Validators.required, Validators.minLength(3), Validators.maxLength(150)]   // Validaciones
@@ -59,18 +59,18 @@ export class PaginaListafrutasComponent implements OnInit {
       precio: [
         0.99,
         [Validators.required, Validators.min(0.99), Validators.max(9999)]
-      ]    
+      ]
 
 
     });
 
-   
+
   }
 
 
   ngOnInit() {
     console.trace('PaginaFrutasComponent ngOnInit');
-this.cargarFrutas();
+    this.cargarFrutas();
 
   }
 
@@ -80,10 +80,10 @@ this.cargarFrutas();
 
     //volvemos a inicializar el array que vamos a llenar para listar
     console.trace('PaginaFrutasComponent cargarFrutas');
- 
+
 
     //llamamos a la funcion getListafrutas() del servicio ListafrutasService
-   
+
     this.listafrutasService.getListafrutas().subscribe(
       //el getListafrutas() de la clase ListafrutasService
       /* OTRO METODO, DATA hace la misma funcion que la de abajo sin añadir linea
@@ -105,7 +105,7 @@ this.cargarFrutas();
 
   }
 
-  editar(fruta :Fruta){
+  editar(fruta: Fruta) {
     console.trace('editar %o', fruta);
 
     this.formulario.controls['nombre'].setValue(fruta.nombre);
@@ -135,34 +135,34 @@ this.cargarFrutas();
 
   }//eliminar
 
-  crear(){
+  crear() {
     console.trace('submit formulario %o', this.formulario.value);
-   //mapear de formulario a Fruta
+    //mapear de formulario a Fruta
 
-   let fruta = new Fruta(
+    let fruta = new Fruta(
 
-                        this.formulario.value.nombre,
-                        this.formulario.value.precio
+      this.formulario.value.nombre,
+      this.formulario.value.precio
 
 
-   );
+    );
 
 
     //TODO hacer que crear pile la imagen
 
     this.listafrutasService.crear(fruta).subscribe(
       data => {
-        console.debug('datos en json %o',data);
+        console.debug('datos en json %o', data);
         this.cargarFrutas(); //vuelve a cargar la lista de frutas 
         this.mensaje = `CREADA NUEVA FRUTA`;
       },
-        error => {
-          console.error(error);
-          this.mensaje = "No es posible crear nueva fruta";
+      error => {
+        console.error(error);
+        this.mensaje = "No es posible crear nueva fruta";
 
-        }
-      );
-     
+      }
+    );
+
   }// fin crear
 }
 
