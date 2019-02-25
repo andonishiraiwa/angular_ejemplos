@@ -3,6 +3,8 @@ const IMAGEN_DEFAULT = 'https://image.freepik.com/vector-gratis/lema-pina-sandia
 
 export class Fruta {
 
+    static IMAGEN_DEFAULT='../../assets/imgs/piñasandia.jpg';
+
     //atributos privador y comienzan con guines bajos
     private _id: number;
     public get id(): number {
@@ -39,10 +41,17 @@ export class Fruta {
     public set descuento(value: number) {
         this._descuento = value;
     }
+
+    //En el get de imagen, si esta esta vacia se le impone la imagen por defecto, es decir una alternativa
     private _imagen: string;
     public get imagen(): string {
-        return this._imagen;
+        if(this._imagen && this._imagen !=''){
+            return this.imagen;
+        }
+        return IMAGEN_DEFAULT;
     }
+
+    //TODO: configurar el setter para imponer una imagen por defecto
     public set imagen(value: string) {
         this._imagen = value;
     }

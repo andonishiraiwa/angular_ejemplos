@@ -36,7 +36,21 @@
       <button type="submit" class="btn btn-block btn-success w-50" [disabled]="formulario.invalid">Crear</button>
       <button type="submit" class="btn btn-block btn-primary w-50" [disabled]="formulario.invalid">Modificar fruta Seleccionada</button>
     </div>
+
+    <div class="form-group">
+      <label for="oferta">Oferta</label>
+      <input type="checkbox" formControlName="oferta" class="form-control">
+    </div>
+
+      <div *ngIf="formulario.controls.oferta.value">
+      <label for="descuento">Descuento</label>
+      <input type="number" formControlName="descuento" class="form-control">
+
+    </div>
+
     </form>
+
+
 
     <hr>
     <div class="d-inline-flex  p-3">

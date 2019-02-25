@@ -59,6 +59,20 @@ export class PaginaListafrutasComponent implements OnInit {
       precio: [
         0.99,
         [Validators.required, Validators.min(0.99), Validators.max(9999)]
+      ],
+
+      oferta:false,
+      //descuento por defecto 0
+      descuento:[0, 
+      [Validators.min(1), Validators.max(99)]
+
+      ],
+
+      imagen:[Fruta.IMAGEN_DEFAULT,
+      
+        [Validators.required]
+
+
       ]
 
 
