@@ -39,6 +39,7 @@ import { PaginaPersonasComponent } from './components/pagina-personas/pagina-per
 import { PaginaTareasComponent } from './components/pagina-tareas/pagina-tareas.component';
 import { PaginaFrutasComponent } from './components/pagina-frutas/pagina-frutas.component';
 import { PaginaListafrutasComponent } from './components/pagina-listafrutas/pagina-listafrutas.component';
+import { AlertaComponent } from './components/alerta/alerta.component';
 
 
 
@@ -72,7 +73,8 @@ import { PaginaListafrutasComponent } from './components/pagina-listafrutas/pagi
     PaginaPersonasComponent,
     PaginaTareasComponent,
     PaginaFrutasComponent,
-    PaginaListafrutasComponent
+    PaginaListafrutasComponent,
+    AlertaComponent
   ],
   imports: [
     BrowserModule,

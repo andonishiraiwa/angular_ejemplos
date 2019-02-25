@@ -66,7 +66,7 @@ export class ListafrutasService {
       //Falta colores
     };
   
-
+    console.trace('modificar ' + url + fruta.id);
     return this.httpClient.put(url + fruta.id, body);
 
 }

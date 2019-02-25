@@ -93,14 +93,6 @@
       "precio": 0.99,
       "imagen": "https://image.freepik.com/vector-gratis/lema-pina-sandia_41984-19.jpg",
       "id": 6
-    },
-    {
-      "nombre": "Piña",
-      "oferta": false,
-      "descuento": 0,
-      "precio": 3,
-      "imagen": "https://image.freepik.com/vector-gratis/lema-pina-sandia_41984-19.jpg",
-      "id": 7
     }
   ],
   "todos": [

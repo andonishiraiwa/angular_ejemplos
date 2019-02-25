@@ -69,6 +69,8 @@ crearFormulario(){
 
   this.formulario = this.formBuilder.group({
 
+
+
     //nombre de FormControll
     nombre: [
       '',                                                                         // value
@@ -95,7 +97,10 @@ crearFormulario(){
 
     ]
 
+    colores: this.formBuilder.array([this.crearColoresformGroup()], Validators.minLength(1);
 
+
+    
   });
 
   // subscribirnos al evento cada vez que cambia la "oferta" para validar el descuento
@@ -117,6 +122,19 @@ crearFormulario(){
  
 }
 
+//creamos un grupo de colores
+crearFormGroup():FormGroup{
+  this.formBuilder.group({
+
+    nombre: ['blanco', [Validators.required, Validators.minLength(2)]],
+    codigo: ['#FFFFFF',
+      [Validators.required, Validators.minLength(4), Validators.maxLength(7)]
+
+    ]
+  });
+
+}
+
   cargarFrutas() { //hace falta llamar a la funcion getFrutas de 'listafrutas.service.ts'
     //aqui llamamos a las funciones del ts de pagina-tareas
 
@@ -135,6 +153,13 @@ crearFormulario(){
         console.debug("datos en json %o", data);
 
         this.frutas = data;
+
+        //teniendo frutas a las que no se les agregaba un color (hasta que añadimos un selector de color en el formulario),
+        //debemos añadir a las frutas ya creadas que no tengan color uno por fefecto
+        if (!this.frutas['colores']) {
+          this.frutas['colores'] = "";
+
+        }
       },
 
       //si falla:
@@ -210,7 +235,7 @@ crearFormulario(){
                             this.formulario.value.oferta,
                             this.formulario.value.descuento,
                             this.formulario.value.imagen,
-                            0 //descuento
+                            0 
     );
 
 
@@ -222,7 +247,9 @@ crearFormulario(){
         this.frutaSeleccionada=new Fruta('',0);
         this.crearFormulario();  //para id = -1
         this.cargarFrutas(); //vuelve a cargar la lista de frutas 
-        this.mensaje = ` NUEVA FRUTA GUARDADA`;
+
+         //this.alert=new Alert (` NUEVA FRUTA GUARDADA`, Alert.PRIMARY); PARA COMPONENTE ALERTA
+        this.mensaje = ` NUEVA FRUTA GUARDADA`; //SIN COMPONENTE
       },
       error => {
         console.error(error);
