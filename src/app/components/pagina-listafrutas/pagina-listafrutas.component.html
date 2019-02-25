@@ -32,22 +32,43 @@
         <label for="nombre">Precio</label>
         <input type="number" formControlName="precio" class="form-control">
       </div>
-      <div class="d-flex">
-      <button type="submit" class="btn btn-block btn-success w-50" [disabled]="formulario.invalid">Crear</button>
-      <button type="submit" class="btn btn-block btn-primary w-50" [disabled]="formulario.invalid">Modificar fruta Seleccionada</button>
-    </div>
 
-    <div class="form-group">
-      <label for="oferta">Oferta</label>
-      <input type="checkbox" formControlName="oferta" class="form-control">
-    </div>
 
-      <div *ngIf="formulario.controls.oferta.value">
-      <label for="descuento">Descuento</label>
-      <input type="number" formControlName="descuento" class="form-control">
 
-    </div>
+     
 
+      <div class="form-group">
+          <label for="oferta" >Oferta</label>
+          <input type="checkbox"  formControlName="oferta" class="form-control">      
+    
+          <div *ngIf="formulario.controls.oferta.value"> 
+            <label for="descuento">Descuento <b>{{formulario.controls.descuento.value}}</b></label>
+            <input type="range" formControlName="descuento" step="1" min="0" max="100" class="form-control"> 
+            
+            <p *ngIf="formulario.controls.descuento.invalid"  
+            class="text-danger">*Debes seleecionar descuento</p>
+          </div>  
+        </div>  
+        <div class="form-group ">
+          <label for="imagen" >Imagen</label>
+          <input type="text" formControlName="imagen" class="form-control">      
+          <img class="img-thumbnail " src="{{formulario.controls.imagen.value}}" alt="url de la imagen de la nueva fruta">
+        </div>  
+
+          <!--TODO: que el valor de descuento sea dependiente de si existe oferta o no-->
+          <!--TODO: ademas, que la oferta sea de minimo 5%-->
+
+      <!--evento onChange, cada vez que cambie el valor del checkbox liberar o bloquear el valor del descuento-->
+      <!-- ó validar internamente que si el valor de oferta es false, el valor de descuento se mantenga en 0-->
+
+      
+ <button type="submit"
+            class="btn btn-block btn-primary"
+            [disabled]="formulario.invalid">
+            <!--CREAR O GUARDAR-->
+            {{(frutaSeleccionada.id == -1)?'Crear':'Guardar Cambios'}}
+    </button>
+      
     </form>
 
 
@@ -84,7 +105,7 @@
                   </td>
 
                   <td>
-                   <!-- <input type="checkbox" [checked]="frutas.completed" (click)="change(frutas)">-->
+                    <!-- <input type="checkbox" [checked]="frutas.completed" (click)="change(frutas)">-->
                   </td>
                 </tr>
 

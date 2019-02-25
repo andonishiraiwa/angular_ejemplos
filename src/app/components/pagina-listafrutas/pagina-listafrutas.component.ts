@@ -26,7 +26,7 @@ export class PaginaListafrutasComponent implements OnInit {
 
   //definimos el array
   frutas: Fruta[]; //modelo fruta asignado a 'frutas'
-
+frutaSeleccionada: Fruta; //tipo Fruta
   nuevaFruta: Fruta;
   mensaje: string;
   formulario: FormGroup;
@@ -41,43 +41,15 @@ export class PaginaListafrutasComponent implements OnInit {
     //llamada al servicio ListafrutasService como listafrutasService
     console.trace('FrutasComponent constructor');
     this.frutas = [];
-    this.nuevaFruta = new Fruta('', 0);
+    this.frutaSeleccionada = new Fruta('', 0);
     this.mensaje = '';
+this.frutaSeleccionada.oferta=true;
+    //cuando acabemos de crear una fruta se carga esta funcion de nuevo
 
+    //esta funcion vuelve a inicializar el formulario (esto antes formaba parte del constructor porque inicializaba)
+this.crearFormulario();
 
-    //inicializamos el formulario
-
-
-    this.formulario = this.formBuilder.group({
-
-      //nombre de FormControll
-      nombre: [
-        '',                                                                         // value
-        [Validators.required, Validators.minLength(3), Validators.maxLength(150)]   // Validaciones
-      ],
-
-      precio: [
-        0.99,
-        [Validators.required, Validators.min(0.99), Validators.max(9999)]
-      ],
-
-      oferta:false,
-      //descuento por defecto 0
-      descuento:[0, 
-      [Validators.min(1), Validators.max(99)]
-
-      ],
-
-      imagen:[Fruta.IMAGEN_DEFAULT,
-      
-        [Validators.required]
-
-
-      ]
-
-
-    });
-
+    
 
   }
 
@@ -88,6 +60,62 @@ export class PaginaListafrutasComponent implements OnInit {
 
   }
 
+
+  
+crearFormulario(){
+
+  //inicializamos el formulario
+
+
+  this.formulario = this.formBuilder.group({
+
+    //nombre de FormControll
+    nombre: [
+      '',                                                                         // value
+      [Validators.required, Validators.minLength(3), Validators.maxLength(150)]   // Validaciones
+    ],
+
+    precio: [
+      0.99,
+      [Validators.required, Validators.min(0.99), Validators.max(9999)]
+    ],
+
+    oferta:false,
+    //descuento por defecto 0
+    descuento:[0
+   // [Validators.min(5), Validators.max(99)]
+   //Pasamos las validaciones a abajo
+
+    ],
+
+    imagen:[Fruta.IMAGEN_DEFAULT,
+    
+      [Validators.required]
+
+
+    ]
+
+
+  });
+
+  // subscribirnos al evento cada vez que cambia la "oferta" para validar el descuento
+  this.formulario.get('oferta').valueChanges.subscribe(
+    oferta=>{
+      console.log('valueChanges %o', oferta);
+      let descuentoFormControl = this.formulario.get('descuento');
+      if (oferta){
+        //Validar decuento            
+        descuentoFormControl.setValidators([Validators.min(1), Validators.max(100)]);
+      }else{
+        //eliminar validaciones
+        descuentoFormControl.setValidators([]);
+      }
+      //actualizar value y validaciones
+      descuentoFormControl.updateValueAndValidity();
+    }
+  );
+ 
+}
 
   cargarFrutas() { //hace falta llamar a la funcion getFrutas de 'listafrutas.service.ts'
     //aqui llamamos a las funciones del ts de pagina-tareas
@@ -119,11 +147,19 @@ export class PaginaListafrutasComponent implements OnInit {
 
   }
 
+
+ 
+
   editar(fruta: Fruta) {
     console.trace('editar %o', fruta);
 
-    this.formulario.controls['nombre'].setValue(fruta.nombre);
+    this.frutaSeleccionada=fruta;
 
+    this.formulario.controls['nombre'].setValue(fruta.nombre);
+    this.formulario.controls['precio'].setValue(fruta.precio);
+    this.formulario.controls['oferta'].setValue(fruta.oferta);
+    this.formulario.controls['descuento'].setValue(fruta.descuento);
+    this.formulario.controls['imagen'].setValue(fruta.imagen);
 
   }
 
@@ -149,30 +185,48 @@ export class PaginaListafrutasComponent implements OnInit {
 
   }//eliminar
 
+/*
+  descontar(){
+
+    if( this.formulario.controls.oferta==false){
+       this.formulario.controls.descuento.setValue(0);
+    }
+    return this.formulario.controls.oferta;
+     }
+     */
+
   crear() {
     console.trace('submit formulario %o', this.formulario.value);
     //mapear de formulario a Fruta
 
+    //
+    let id=this.frutaSeleccionada.id;
+    console.debug(`identificador fruta {id}`);
+
     let fruta = new Fruta(
-
-      this.formulario.value.nombre,
-      this.formulario.value.precio
-
-
+                            this.formulario.value.nombre,
+                            this.formulario.value.precio,
+                            id,
+                            this.formulario.value.oferta,
+                            this.formulario.value.descuento,
+                            this.formulario.value.imagen,
+                            0 //descuento
     );
 
 
     //TODO hacer que crear pile la imagen
 
-    this.listafrutasService.crear(fruta).subscribe(
+    this.listafrutasService.guardar(fruta).subscribe(
       data => {
         console.debug('datos en json %o', data);
+        this.frutaSeleccionada=new Fruta('',0);
+        this.crearFormulario();  //para id = -1
         this.cargarFrutas(); //vuelve a cargar la lista de frutas 
-        this.mensaje = `CREADA NUEVA FRUTA`;
+        this.mensaje = ` NUEVA FRUTA GUARDADA`;
       },
       error => {
         console.error(error);
-        this.mensaje = "No es posible crear nueva fruta";
+        this.mensaje = "No es posible guardar la nueva fruta";
 
       }
     );

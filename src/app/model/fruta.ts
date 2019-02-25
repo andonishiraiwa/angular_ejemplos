@@ -39,7 +39,10 @@ export class Fruta {
         return this._descuento;
     }
     public set descuento(value: number) {
+
+        if(this.oferta){
         this._descuento = value;
+        }
     }
 
     //En el get de imagen, si esta esta vacia se le impone la imagen por defecto, es decir una alternativa
@@ -53,8 +56,11 @@ export class Fruta {
 
     //TODO: configurar el setter para imponer una imagen por defecto
     public set imagen(value: string) {
+        if(this._imagen && this._imagen !=''){
         this._imagen = value;
     }
+    this._imagen=Fruta.IMAGEN_DEFAULT;
+}
     private _cantidad: number;
     public get cantidad(): number {
         return this._cantidad;

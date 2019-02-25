@@ -36,9 +36,26 @@ export class ListafrutasService {
     return this.httpClient.delete(url);
   }
 
-  public crear(fruta: Fruta): Observable<any> {
+  public guardar(fruta: Fruta): Observable<any> {
     let url = this.endpoint; //no se necesita la id para crear
-    console.trace("crear" + url);
+    console.trace("guardar" + url);
+
+    //en funcion del id, si pertenece a una fruta o a una nueva que estemos creando, habra que llamar al POST o al PUT
+
+
+    if(fruta.id == -1){
+    let body = {
+      nombre: fruta.nombre,
+      oferta: fruta.oferta,
+      descuento: fruta.descuento,
+      precio: fruta.precio,
+      imagen: fruta.imagen
+      //Falta colores
+    };
+
+    return this.httpClient.post(url, body);
+
+  }else{
 
     let body = {
       nombre: fruta.nombre,
@@ -48,6 +65,12 @@ export class ListafrutasService {
       imagen: fruta.imagen
       //Falta colores
     };
-    return this.httpClient.post(url, body);
+  
+
+    return this.httpClient.put(url + fruta.id, body);
+
+}
+
+   
   }
 }
