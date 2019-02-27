@@ -45,6 +45,8 @@ export class Fruta {
         }
     }
 
+    private
+
     //En el get de imagen, si esta esta vacia se le impone la imagen por defecto, es decir una alternativa
     private _imagen: string;
     public get imagen(): string {
@@ -94,6 +96,7 @@ export class Fruta {
         this._descuento = (descuento) ? descuento : 0;
         this._imagen = (imagen) ? imagen : IMAGEN_DEFAULT;
         this._cantidad = (cantidad) ? cantidad : 0;
+        
     }
 
     //getters y setters

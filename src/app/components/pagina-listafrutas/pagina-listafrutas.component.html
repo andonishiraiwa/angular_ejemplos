@@ -48,8 +48,7 @@
         <input type="number" formControlName="precio" class="form-control">
       </div>
 
-
-
+     
      
 
       <div class="form-group">
@@ -76,7 +75,11 @@
       <!--evento onChange, cada vez que cambie el valor del checkbox liberar o bloquear el valor del descuento-->
       <!-- ó validar internamente que si el valor de oferta es false, el valor de descuento se mantenga en 0-->
 
-      
+      <div>
+      <label for="colores">Colroes</label>
+      <input type="text" formControlName="colores" class="form-control">
+    </div>
+
  <button type="submit"
             class="btn btn-block btn-primary"
             [disabled]="formulario.invalid">

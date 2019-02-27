@@ -3,7 +3,11 @@ export class Color{
     private _nombre: string;
     private _codigo: string;
 
+    constructor{
+this._nombre=(nombre)?nombre : 'blanco';
+this._nombre=(codigo)?codigo : '#FFF';
 
+    }
 
    
     public get nombre(): string {

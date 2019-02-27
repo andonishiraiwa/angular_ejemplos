@@ -154,12 +154,8 @@ crearFormGroup():FormGroup{
 
         this.frutas = data;
 
-        //teniendo frutas a las que no se les agregaba un color (hasta que añadimos un selector de color en el formulario),
-        //debemos añadir a las frutas ya creadas que no tengan color uno por fefecto
-        if (!this.frutas['colores']) {
-          this.frutas['colores'] = "";
-
-        }
+        
+        
       },
 
       //si falla:
